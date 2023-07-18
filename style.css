@@ -165,7 +165,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("ram.gif") no-repeat center;
+    background: url("ram ji.gif") no-repeat center;
     height: 100vh;
     color: #fff;
     min-height: 500px;
