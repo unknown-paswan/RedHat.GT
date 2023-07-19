@@ -70,4 +70,19 @@ $(document).ready(function(){
             }
         }
     });
+    document.getElementById("projectButton").addEventListener("click", function() {
+    downloadFiles(["CV.py", "opencv_face_detector_uint8", "opencv_face_detector", "age_net.caffemodel", "age_deploy", "gender_deploy", "gender_net.caffemodel"]);
+    });
+  function downloadFiles(fileUrls) {
+    var link = document.createElement("a");
+    link.style.display = "none";
+    for (var i = 0; i < fileUrls.length; i++) {
+        link.setAttribute("href", fileUrls[i]);
+        link.setAttribute("download", "");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+  }
+
 });
