@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Detection</title>
+    <style>
+        body {
+            background: url("ram ji.gif") no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            color: #d32f2f;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #FFF, 0 0 25px #FFF, 0 0 30px #FFF, 0 0 35px #FFF;
+            }
+            to {
+                text-shadow: 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #FFF, 0 0 25px #FFF, 0 0 30px #FFF, 0 0 35px #FFF, 0 0 40px #FFF;
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 12px 24px;
+            border-radius: 5px;
+            background-color: #FFF;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #000;
+            color: #FFF;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function startCapture() {
+                $.ajax({
+                    url: "/start_capture",
+                    type: "POST",
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
+
+            function openImage() {
+                var imagePath = prompt("Enter the path for the image file:");
+                $.ajax({
+                    url: "/open_image",
+                    type: "POST",
+                    data: { path: imagePath },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            }
+
+            $("#start_capture_btn").click(startCapture);
+            $("#open_image_btn").click(openImage);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Face Detection</h1>
+    </div>
+    <div class="container">
+        <button id="start_capture_btn">Start Video Capture</button>
+        <button id="open_image_btn">Open Image</button>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+        function startCapture() {
+            $.ajax({
+                url: "/start_capture",
+                type: "POST",
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        function openImage() {
+            var imagePath = prompt("Enter the path for the image file:");
+            $.ajax({
+                url: "/open_image",
+                type: "POST",
+                data: { path: imagePath },
+                success: function(response) {
+                    console.log(response);
+                }
+            });
+        }
+
+        $("#start_capture_btn").click(startCapture);
+        $("#open_image_btn").click(openImage);
+    });
+</script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .back-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>My Project</h1>
+    <!-- Add your project content here -->
+</div>
+
+<button class="back-btn" onclick="goBack()">Back</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
