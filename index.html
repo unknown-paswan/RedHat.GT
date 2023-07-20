@@ -59,7 +59,7 @@
                     <div class="text">I'm UNKNOWN_PASWAN and I'm a <span class="typing-2"></span></div>
                     <p>"Hello! I'm UNKNOWN_PASWAN, a passionate and creative individual with a love for all things related to technology and design. I thrive in the world of web design and development, where I get to combine my artistic skills with my technical expertise to create visually appealing and user-friendly websites. With a solid foundation in HTML, CSS, and JavaScript, I enjoy crafting elegant and responsive designs that not only captivate users but also provide a seamless browsing experience across different devices and screen sizes. I believe that a well-designed website is not only visually appealing but also intuitive and easy to navigate.  I am deeply committed to user-centered design, always striving to understand the needs and preferences of the target audience. By conducting thorough research and usability testing, I ensure that every design decision I make is purposeful and optimized for an exceptional user experience..</p>
                      <a href="#" id="project-btn">Project</a>
-                     <p class="message">Project will be uploaded soon !..</p>
+                     <p class="message">#</p>
 
 
                 </div>
@@ -262,6 +262,135 @@
                 </div>
             </div>
     </section>
+     <style>
+        /* ... Your existing styles ... */
+
+        /* CSS to style the file list and download button */
+        .file-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .file-item {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .download-btn {
+            margin-top: 5px;
+            padding: 8px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <section class="project" id="project">
+        <div class="max-width">
+            <div class="file-list" style="display: none;">
+                <h2 class="title">My Projects</h2>
+                <h2 class="title">Project-CV</h2>
+                <div class="file-item">
+                    <a href="CV.py" download>CV</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="age_deploy.prototxt" download>Age.d</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="age_net.caffemodel" download>age.caff</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="gender_deploy.prototxt" download>Gender.d</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="gender_net.caffemodel" download>Gender.caff</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="opencv_face_detector.pbtxt" download>Face.d</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="opencv_face_detector_uint8.pb" download>Face.u8</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <div class="file-item">
+                    <a href="detection_matrix.txt" download>File</a>
+                    <button class="download-btn">Download</button>
+                </div>
+                <!-- Add more file items as needed -->
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            var lastScrollTop = 0;
+            var isFileListVisible = false;
+    
+            $("#project-btn").click(function (event) {
+                event.preventDefault();
+                $(".file-list").slideToggle(500);
+                isFileListVisible = !isFileListVisible;
+    
+                // Scroll to the file list when the "Project" button is clicked
+                if (isFileListVisible) {
+                    $("html, body").animate({
+                        scrollTop: $("#project").offset().top
+                    }, 800);
+                }
+            });
+    
+            $(".download-btn").click(function (event) {
+                event.preventDefault();
+                var file = $(this).data("file");
+                if (file) {
+                    var link = document.createElement("a");
+                    link.href = file;
+                    link.download = "";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            });
+    
+            $(window).scroll(function () {
+                // Hide the file list when scrolling up
+                var currentScrollTop = $(this).scrollTop();
+                if (currentScrollTop < lastScrollTop && isFileListVisible) {
+                    $(".file-list").slideUp(500);
+                    isFileListVisible = false;
+                }
+                lastScrollTop = currentScrollTop;
+            });
+        });
+    </script>
 
     <!-- footer section start -->
     <footer>
